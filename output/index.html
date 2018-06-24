@@ -1,0 +1,1786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Nitin's Applied Data Science Blog</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Nitin's Applied Data Science Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/theory.html">theory</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/summary_of_deep_learning_concepts.html">Summary of Deep Learning Concepts</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-06-24T11:26:00-07:00">
+                Published: Fri 24 June 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/nitin-pasumarthy.html">Nitin Pasumarthy</a>
+        </address>
+<p>In <a href="/category/theory.html">theory</a>.</p>
+<p>tags: <a href="/tag/deep-learning.html">deep learning</a> <a href="/tag/theory.html">theory</a> <a href="/tag/coursera.html">coursera</a> <a href="/tag/deeplearningai.html">deeplearning.ai</a> </p>
+</footer><!-- /.post-info --><style type="text/css">/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI colors. */
+.ansibold {
+  font-weight: bold;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+}
+div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
+  border-left-color: #E3F2FD;
+  border-left-width: 1px;
+  padding-left: 5px;
+  border-right-color: #E3F2FD;
+  border-right-width: 1px;
+  background: #E3F2FD;
+}
+@media print {
+  div.cell.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected {
+  border-color: #ababab;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  div.cell.selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
+.edit_mode div.cell.selected {
+  border-color: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+  /* Don't highlight prompt number selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Use default cursor */
+  cursor: default;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  min-width: 0;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell > div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: #303F9F;
+  border-top: 1px solid transparent;
+}
+div.input_area > div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area > div.highlight > pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+/* The following gets added to the <head> if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font.
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+.CodeMirror {
+  line-height: 1.21429em;
+  /* Changed from 1em to our global default */
+  font-size: 14px;
+  height: auto;
+  /* Changed to auto to autogrow */
+  background: none;
+  /* Changed from white to allow our bg to show through */
+}
+.CodeMirror-scroll {
+  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-lines {
+  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
+  /* we have set a different line-height and want this to scale with that. */
+  padding: 0.4em;
+}
+.CodeMirror-linenumber {
+  padding: 0 8px 0 4px;
+}
+.CodeMirror-gutters {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.CodeMirror pre {
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+Adapted from GitHub theme
+
+*/
+.highlight-base {
+  color: #000;
+}
+.highlight-variable {
+  color: #000;
+}
+.highlight-variable-2 {
+  color: #1a1a1a;
+}
+.highlight-variable-3 {
+  color: #333333;
+}
+.highlight-string {
+  color: #BA2121;
+}
+.highlight-comment {
+  color: #408080;
+  font-style: italic;
+}
+.highlight-number {
+  color: #080;
+}
+.highlight-atom {
+  color: #88F;
+}
+.highlight-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.highlight-builtin {
+  color: #008000;
+}
+.highlight-error {
+  color: #f00;
+}
+.highlight-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.highlight-meta {
+  color: #AA22FF;
+}
+/* previously not defined, copying from default codemirror */
+.highlight-def {
+  color: #00f;
+}
+.highlight-string-2 {
+  color: #f50;
+}
+.highlight-qualifier {
+  color: #555;
+}
+.highlight-bracket {
+  color: #997;
+}
+.highlight-tag {
+  color: #170;
+}
+.highlight-attribute {
+  color: #00c;
+}
+.highlight-header {
+  color: blue;
+}
+.highlight-quote {
+  color: #090;
+}
+.highlight-link {
+  color: #00c;
+}
+/* apply the same style to codemirror */
+.cm-s-ipython span.cm-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-atom {
+  color: #88F;
+}
+.cm-s-ipython span.cm-number {
+  color: #080;
+}
+.cm-s-ipython span.cm-def {
+  color: #00f;
+}
+.cm-s-ipython span.cm-variable {
+  color: #000;
+}
+.cm-s-ipython span.cm-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-variable-2 {
+  color: #1a1a1a;
+}
+.cm-s-ipython span.cm-variable-3 {
+  color: #333333;
+}
+.cm-s-ipython span.cm-comment {
+  color: #408080;
+  font-style: italic;
+}
+.cm-s-ipython span.cm-string {
+  color: #BA2121;
+}
+.cm-s-ipython span.cm-string-2 {
+  color: #f50;
+}
+.cm-s-ipython span.cm-meta {
+  color: #AA22FF;
+}
+.cm-s-ipython span.cm-qualifier {
+  color: #555;
+}
+.cm-s-ipython span.cm-builtin {
+  color: #008000;
+}
+.cm-s-ipython span.cm-bracket {
+  color: #997;
+}
+.cm-s-ipython span.cm-tag {
+  color: #170;
+}
+.cm-s-ipython span.cm-attribute {
+  color: #00c;
+}
+.cm-s-ipython span.cm-header {
+  color: blue;
+}
+.cm-s-ipython span.cm-quote {
+  color: #090;
+}
+.cm-s-ipython span.cm-link {
+  color: #00c;
+}
+.cm-s-ipython span.cm-error {
+  color: #f00;
+}
+.cm-s-ipython span.cm-tab {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+div.output_wrapper {
+  /* this position must be relative to enable descendents to be absolute within it */
+  position: relative;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin: 0px;
+  padding: 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px 0.4em;
+  position: absolute;
+  border-radius: 2px;
+}
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  -webkit-box-shadow: inset 0 0 1px #000;
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+  color: #D84315;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+  padding: 0px;
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.output_area .MathJax_Display {
+  text-align: left !important;
+}
+div.output_area 
+div.output_area 
+div.output_area img,
+div.output_area svg {
+  max-width: 100%;
+  height: auto;
+}
+div.output_area img.unconfined,
+div.output_area svg.unconfined {
+  max-width: none;
+}
+/* This is needed to protect the pre formating from global settings such
+   as that of bootstrap */
+.output {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.output_area {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+div.output_area pre {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+}
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+  overflow-x: auto;
+  padding: 0.4em;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+  max-width: calc(100% - 14ex);
+}
+div.output_scroll div.output_subarea {
+  overflow-x: visible;
+}
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+/* all text output has this class: */
+div.output_text {
+  text-align: left;
+  color: #000;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+div.output_stderr {
+  background: #fdd;
+  /* very light red background for stderr */
+}
+div.output_latex {
+  text-align: left;
+}
+/* Empty output_javascript divs should have no height */
+div.output_javascript:empty {
+  padding: 0;
+}
+.js-error {
+  color: darkred;
+}
+/* raw_input styles */
+div.raw_input_container {
+  line-height: 1.21429em;
+  padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
+}
+input.raw_input {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  width: auto;
+  /* make sure input baseline aligns with prompt */
+  vertical-align: baseline;
+  /* padding + margin = 0.5em between prompt and cursor */
+  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+input.raw_input:focus {
+  box-shadow: none;
+}
+p.p-space {
+  margin-bottom: 10px;
+}
+div.output_unrecognized {
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+div.output_unrecognized a {
+  color: inherit;
+  text-decoration: none;
+}
+div.output_unrecognized a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.rendered_html {
+  color: #000;
+  /* any extras will just be numbers: */
+}
+
+
+
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.rendered_html h1:first-child {
+  margin-top: 0.538em;
+}
+.rendered_html h2:first-child {
+  margin-top: 0.636em;
+}
+.rendered_html h3:first-child {
+  margin-top: 0.777em;
+}
+.rendered_html h4:first-child {
+  margin-top: 1em;
+}
+.rendered_html h5:first-child {
+  margin-top: 1em;
+}
+.rendered_html h6:first-child {
+  margin-top: 1em;
+}
+
+
+
+
+
+
+
+
+.rendered_html * + ul {
+  margin-top: 1em;
+}
+.rendered_html * + ol {
+  margin-top: 1em;
+}
+
+
+.rendered_html pre,
+
+
+
+.rendered_html tr,
+.rendered_html th,
+
+.rendered_html td,
+
+
+.rendered_html * + table {
+  margin-top: 1em;
+}
+
+.rendered_html * + p {
+  margin-top: 1em;
+}
+
+.rendered_html * + img {
+  margin-top: 1em;
+}
+.rendered_html img,
+
+.rendered_html img.unconfined,
+
+div.text_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.text_cell > div.prompt {
+    display: none;
+  }
+}
+div.text_cell_render {
+  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  outline: none;
+  resize: none;
+  width: inherit;
+  border-style: none;
+  padding: 0.5em 0.5em 0.5em 0.4em;
+  color: #000;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+.text_cell.rendered .input_area {
+  display: none;
+}
+.text_cell.rendered 
+.text_cell.unrendered .text_cell_render {
+  display: none;
+}
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.cm-header-1 {
+  font-size: 185.7%;
+}
+.cm-header-2 {
+  font-size: 157.1%;
+}
+.cm-header-3 {
+  font-size: 128.6%;
+}
+.cm-header-4 {
+  font-size: 110%;
+}
+.cm-header-5 {
+  font-size: 100%;
+  font-style: italic;
+}
+.cm-header-6 {
+  font-size: 100%;
+  font-style: italic;
+}
+</style>
+<style type="text/css">.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
+<style type="text/css">
+/* Temporary definitions which will become obsolete with Notebook release 5.0 */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+</style>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Summary-of-concepts-in-Deep-Learning">Summary of concepts in Deep Learning<a class="anchor-link" href="#Summary-of-concepts-in-Deep-Learning">¶</a></h1><hr/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Deep Learning is an emerging field which needs no introduction. The aim of this article is to collaboratively learn various concepts in Deep Learning in a concise manner. If you feel something can be added or updated please add a comment. I will keep adding new material to this article as well.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="How-to-use-this-article?">How to use this article?<a class="anchor-link" href="#How-to-use-this-article?">¶</a></h2><p>Deep Learning has many parameters, hyperparameters and concepts. This article aims to give a quick refresher on some core topics, especially to those who are new to this field. Some use cases I can think of,</p>
+<ul>
+<li>Whenever you encounter a term in Deep Learning online when surfing the web and cannot remember what it means, come here and do a quick find. </li>
+<li>If you are preparing for an interview for a ML role and want to quickly revise, this is a good place as being concise and complete was my primary motto</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Credits">Credits<a class="anchor-link" href="#Credits">¶</a></h2><p>A big thank you to DeepLearning.ai team and their Deep Learning specialization on Coursera. All the material here including notations, concepts, some diagrams are a heavily shortened form of their excellent 5 course series.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notation-used-throughout">Notation used throughout<a class="anchor-link" href="#Notation-used-throughout">¶</a></h2><p>Refer this section for any variables used in the article</p>
+<table>
+<thead><tr>
+<th>notation</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$m$</td>
+<td>number of training examples</td>
+</tr>
+<tr>
+<td>$n_x$</td>
+<td>number of features per training example</td>
+</tr>
+<tr>
+<td>$X$</td>
+<td>input matrix where each column is a training example</td>
+</tr>
+<tr>
+<td>$Y$</td>
+<td>output matrix where each column is the corresponding label of the training example in $X$, i.e. $Y[0]$ is the label for $X[0]$, the 1st training example</td>
+</tr>
+<tr>
+<td>$\hat{Y}$</td>
+<td>predicted labels for new test inputs</td>
+</tr>
+<tr>
+<td>$Z$</td>
+<td>linear transformation of $X$</td>
+</tr>
+<tr>
+<td>$A$</td>
+<td>non-linear transformation of $Z$, the result of an activation function</td>
+</tr>
+<tr>
+<td>$W$</td>
+<td>weights matrix for each feature in $X$</td>
+</tr>
+<tr>
+<td>$x$</td>
+<td>features of one training example</td>
+</tr>
+<tr>
+<td>$y$</td>
+<td>output label of one training example</td>
+</tr>
+<tr>
+<td>$\hat{y}$</td>
+<td>predicted output label of one training example</td>
+</tr>
+<tr>
+<td>$z$</td>
+<td>linear transformation of $x$</td>
+</tr>
+<tr>
+<td>$a$</td>
+<td>non-linear transformation of $z$, the result of an activation function</td>
+</tr>
+<tr>
+<td>$w$</td>
+<td>weights matrix for $x$</td>
+</tr>
+<tr>
+<td>$b$</td>
+<td>bias matrix</td>
+</tr>
+<tr>
+<td>$\sigma$</td>
+<td>sigmoid function, $\sigma(z)= \frac{1}{(1 + e^{-z} )}$ and the output lies in between (0, 1) for any value of $z$</td>
+</tr>
+<tr>
+<td>$x_j^{(i)}$</td>
+<td>value of the feature j in i<sup>th</sup> training example </td>
+</tr>
+<tr>
+<td>$w_j^{(i)[k]}$</td>
+<td>value of the weight for j<sup>th</sup> hidden unit in k<sup>th</sup> layer of i<sup>th</sup> training example</td>
+</tr>
+<tr>
+<td>$L$</td>
+<td>total number of layers in a deep neural net (excluding input layer)</td>
+</tr>
+<tr>
+<td>$n^{[l]}$</td>
+<td>number of units in hidden layer $l$</td>
+</tr>
+<tr>
+<td>$X^{\{t\}}$, $Y^{\{t\}}$</td>
+<td>$X$ and $Y$ values for t<sup>th</sup> mini-batch in mini-batch gradient descend</td>
+</tr>
+<tr>
+<td>$J$</td>
+<td>cost function of the model considering all training examples</td>
+</tr>
+<tr>
+<td>$C$</td>
+<td>number of classes in a multi-class classifier</td>
+</tr>
+<tr>
+<td>$X^{(i)&lt;t&gt;}$</td>
+<td>In sequence models, represents the t<sup>th</sup> element in i<sup>th</sup> training example</td>
+</tr>
+<tr>
+<td>$Y^{(i)&lt;t&gt;}$</td>
+<td>In sequence models, represents the output value of t<sup>th</sup> element in i<sup>th</sup> training example</td>
+</tr>
+<tr>
+<td>$T_X^{(i)}$</td>
+<td>In sequence models, represents the length of input sequence in i<sup>th</sup> training example</td>
+</tr>
+<tr>
+<td>$T_Y^{(i)}$</td>
+<td>In sequence models, represents the length of output sequence in i<sup>th</sup> training example</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Logistic-Regression,-the-building-block-of-Deep-Neural-Nets">Logistic Regression, the building block of Deep Neural Nets<a class="anchor-link" href="#Logistic-Regression,-the-building-block-of-Deep-Neural-Nets">¶</a></h2><p>It is a linear model for classification. The goal of the model is to predict probabilities of output labels for a given input.
+$$z= w^T x+b$$
+$$a=\sigma(z)$$
+$$\hat{y} = a$$</p>
+<p>Cross entropy loss for finding out how good the predictions are for a single training example,
+$$L(\hat{y},y)= -(y log(⁡\hat{y}) + (1-y)log(⁡\hat{y}))$$</p>
+<p>Cost function for all examples,
+$$J= -\frac{1}{m} \sum_{i=1}^mL(\hat{y}^{(i)} ,y^{(i)})$$
+This $J$ is used by an optimization algorithm (like gradient descend) to find optimal values for $w$ and $b$.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Shallow-Neural-Nets">Shallow Neural Nets<a class="anchor-link" href="#Shallow-Neural-Nets">¶</a></h2><p>In logistic regression $z$ and $a$ are computed to obtain prediction for each training example. In a shallow neural net, this process is repeated twice before predicting the output label. In logistic regression,</p>
+<p><img alt="logistic_regression_network" src="https://drive.google.com/uc?export=view&amp;id=1dm9gVeDOf6FOZdaBhIHp94fkRPCP7_nN"/></p>
+<p>whereas in a shallow net,</p>
+<p><img alt="shallow_neural_network" src="https://drive.google.com/uc?export=view&amp;id=1dFX5kBsG45RLvnAyFNl80TNdIN7UGizH"/></p>
+<p>[1] and [2] are layers in the network. Layer [1] is a hidden layer as it is neither the input nor output. Layer [1] has three (hidden) units / neurons and layer [2] has one unit. The prediction for a training example $x$, is as follows in a shallow neural net,</p>
+<p>$$z^{[1]}= w^{[1]} x+b^{[1]}$$
+$$a^{[1]} = \sigma(z^{[1]})$$
+$$z^{[2]} = w^{[2]}a^{[1]} +b^{[2]}$$
+$$\hat{y}=a^{[2]} =\sigma(z^{[2]})$$</p>
+<p>This process is extended to all training examples to obtain $Z^{[1]}$, $Z^{[2]}$, $A^{[1]}$, $A^{[2]}$, $\hat{Y}$. If this process is extended to more than 2 hidden layers it is called a deep neural net!</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Activation-functions">Activation functions<a class="anchor-link" href="#Activation-functions">¶</a></h2><ul>
+<li>sigmoid, $\sigma(z)= \frac{1}{1+e^{-z}}$<ul>
+<li>σ(z) lies in between (0, 1)</li>
+<li>generally used for binary classification tasks in the last layer</li>
+</ul>
+</li>
+<li>$tanh(z)= \frac{e^z  - e^{-z}}{e^z  + e^{-z}}$<ul>
+<li>$tanh(z)$ lies in between (-1, 1)</li>
+<li>the graph is centered at 0, unlike sigmoid</li>
+</ul>
+</li>
+<li>$ReLU(z) = max (0,z)$<ul>
+<li>both sigmoid and tanh slow down learning when $z$ is too small or high</li>
+<li>neural net learns much faster when compared to sigmoid or tanh </li>
+<li>generally used in the hidden layers</li>
+</ul>
+</li>
+<li>$Leaky\ ReLU(z) = max⁡(0.01z,z)$</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Deep-Neural-Nets">Deep Neural Nets<a class="anchor-link" href="#Deep-Neural-Nets">¶</a></h2><p>Simply put, it is a neural network with multiple hidden layers. The number of layers $L$ and number of units in each layer are hyperparameters decided before training.</p>
+<p><center>
+<img alt="deep neural nets" height="250px" src="https://drive.google.com/uc?export=view&amp;id=1_qm8c14Gws-k_aR1zeBzlN2O0wvP1kgt">
+</img></center></p>
+<caption>
+<center>
+<strong>Figure 1: </strong>
+    A 4 layer, fully connected deep neural network
+  </center>
+</caption><p>The above network has $L = 4$, $n^{[1]} = 3$, $n^{[2]} = 4$, $n^{[3]} = 3$ and $n^{[4]}=1$. $\hat{Y} = A^L$ is the result for all training examples. $X = A^{[0]}$ is computed as,</p>
+<p>$$Z^{[1]} = W^{[1]}  A^{[0]} + b^{[1]}$$</p>
+<p>$$A^{[1]} = g^{[1]}( Z^{[1]})$$</p>
+<p>Similarly, the process is repeated for layers [2], [3] and [4]
+$$\hat{Y}= A^{[L=4]}= g^{[4]}( Z^{[4]})$$</p>
+<p>Here $g^{[l]}$ is the activation function used in layer $l$. When implemented with numpy vectors, all computations are parallelized across training examples and is called a vectorized implementation. Without vectorization, the neural net has to loop over training examples one by one to complete one epoch of training which slows down learning.</p>
+<p>Each training example $x^{(i)}$, is passed through the net to obtain the prediction $\hat{y}^{(i)}$ from the last layer. This step is called <strong>forward propagation</strong> in the entire process. $\hat{y}^{(i)}$ is compared with $y^{(i)}$ using $J$ to obtain the error in prediction. This error is passed back from layer $[L]$ to $[L-1]$ to $[L-2]$ and so on to $[1]$ to adjust $W^{[l]}$ , $b^{[l]}$ at each layer so that the next prediction causes smaller error. This step of passing back the error is called <strong>back propagation</strong> in the entire process. Every time error is passed back, the amount of change the system makes to the parameters $W^{[l]}$, $b^{[l]}$ is governed by a hyperparameter called learning rate, $\alpha$.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Dimensionality-checks">Dimensionality checks<a class="anchor-link" href="#Dimensionality-checks">¶</a></h3><p>These formulae can help debug <a href="https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.ndarray.shape.html">dimensions</a> of various matrices during implementing deep neural nets</p>
+<ul>
+<li>$w^{[l]}.shape = (n^{[l]}, n^{[l-1]})$</li>
+<li>$b^{[l]}.shape = (n^{[l]}, 1)$</li>
+<li>$A^{[l]}.shape = Z^{[l]}.shape = (n^{[l]}, m)$</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Hyperparameters-to-choose">Hyperparameters to choose<a class="anchor-link" href="#Hyperparameters-to-choose">¶</a></h3><p>$W^{[l]}$, $b^{[l]}$ are parameters of the neural net and are learned during the training phase. Hyperparameters are manually set by the developer before training.</p>
+<ul>
+<li>learning rate alpha, $\alpha$ - the rate at which parameters are updated to bring the predictions close to actual values</li>
+<li>number of epochs – After training with the entire training data once, one epoch is completed. This parameter controls how many times this should be repeated.</li>
+<li>hidden layers, L – how many hidden layers in the Deep Neural Net (DNN)</li>
+<li>hidden units per layer – values for $n^{[1]}$, $n^{[2]}$, $n^{[3]}$,…, $n^{[L]}$</li>
+<li>activation functions – <a href="#activation-functions">activation function</a> to use in each layer, $g^{[1]}$, $g^{[2]}$, $g^{[3]}$,…, $g^{[L]}$</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Optimizing-Deep-Neural-Networks">Optimizing Deep Neural Networks<a class="anchor-link" href="#Optimizing-Deep-Neural-Networks">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Data-splitting-–-All-data-from-same-distribution">Data splitting – All data from same distribution<a class="anchor-link" href="#Data-splitting-–-All-data-from-same-distribution">¶</a></h3><p>All the available labelled data is split into,</p>
+<p><img alt="data splitting in same distribution" src="https://drive.google.com/uc?export=view&amp;id=1IVxLaZtnxIJNmXwFAgmHdDR6gn-7xf6Z"/></p>
+<ul>
+<li>Train data – Majority of the data is used for training</li>
+<li>Dev data – Also called validation set / data. Used for validating the model and hyperparameter tuning</li>
+<li>Test data – Used for validating the final chosen model</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Error-Types">Error Types<a class="anchor-link" href="#Error-Types">¶</a></h4><p>As shown in Figure 2, a DNN has a train and dev error besides the test error</p>
+<ul>
+<li>Avoidable bias – difference between human error (the benchmark many a times) and training error. Possible solutions to reduce this are:<ul>
+<li>Train on a bigger network (increase $L$ or $n^{[l]}$)</li>
+<li>Increase number of epochs</li>
+<li>Change network architecture</li>
+</ul>
+</li>
+<li>Variance – difference between training error and dev error. This happens due to overfitting to training data. Possible solutions to reduce this are:<ul>
+<li>Train on more data</li>
+<li>Regularization</li>
+<li>Change network architecture</li>
+</ul>
+</li>
+</ul>
+<center>
+<img alt="errors when all data is from same distribution" src="https://drive.google.com/uc?export=view&amp;id=1d438hrqAbvGFRLcXdERzSV2dJz1su2hV"/>
+</center>
+<center>
+<caption>
+<strong>Figure 2: </strong>
+    Range of each error
+  </caption>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Data-Splitting-–-Data-from-different-distributions">Data Splitting – Data from different distributions<a class="anchor-link" href="#Data-Splitting-–-Data-from-different-distributions">¶</a></h3><p>Ideally train, dev and test sets should be from the same data distribution for best results. But sometimes big enough data might not be available for performing a deep learning experiment. For example, for creating a DNN to classify 100 pictures of your 2 cats, training on cat pictures from internet and testing on your 100 cat pictures may not yield good results as data distributions are different. In such situations,</p>
+<center>
+<img alt="split limited data sample figure" height="75px" src="https://drive.google.com/uc?export=view&amp;id=1VFingcLOJDHFw9RIYz8sDnK7BZ3xEUp3"/>
+</center><p>split the available 100 cat pictures 50-50. Mix the Train (50) pictures with internet pictures like so</p>
+<center>
+<img alt="how to use the split limited data figure" src="https://drive.google.com/uc?export=view&amp;id=1xZvPvNkKEQTpEmp1wjnwZ5CMnOjAL5iM"/>
+</center><p>As the train and dev data are different distributions, comparing the training and dev errors does not clarify if it is due to high variance or due to data mismatch. Hence, the train data is split into train and training-dev after mixing your 50 cat pictures.</p>
+<center>
+<img alt="final data after mixing all available data sources figure" src="https://drive.google.com/uc?export=view&amp;id=1PXrBR1meIcWKDy_U0ygYVCNfJGtPR0OT"/>
+</center><p>Now as train and training-dev sets are from same distribution, it can be understood the root cause of the problem as either bias or variance or data mismatch.</p>
+<center>
+<img alt="range of errors when data is from different distributions figure" src="https://drive.google.com/uc?export=view&amp;id=13FSFXlY-ivHnPLrQgHpBbaA9yfFVfUY3"/>
+</center>
+<center>
+<caption>
+<strong>Figure 3: </strong>
+    Range of errors when not all data is from same distribution
+  </caption>
+</center><p>As shown in Figure 3, as training-dev set and dev-set are from different data distributions, the difference between their errors is due to data mismatch.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Regularization">Regularization<a class="anchor-link" href="#Regularization">¶</a></h3><p>When the neural net over fits (high variance) the model to training data, predictions on unseen dev set can be poor. Regularization reduces the impact of (various) neurons in the model so that it can generalize better to unseen inputs. lambda $\lambda$, is the hyperparameter which controls the amount of regularization used in L1 and L2 algorithms. Here are some algorithms / ideas for regularization,</p>
+<ul>
+<li>L1 – Uses L1-norm to penalize $W$’s</li>
+<li>L2 – Uses L2-norm to penalize $W$’s</li>
+<li>Dropout – Randomly zeros (drops) some neurons from the network thus making it simpler and generalize better. $keep\_prob$ is the hyperparamater which is the probability of retaining a neuron. Different layers can have different values of $keep\_prob$ based on density of connections</li>
+<li>Data augmentation – transform, randomly crop and translate input training images</li>
+<li>Early stopping – after every epoch compute dev error and once it starts increasing, stop the training though training error continues to decrease (sign for overfitting)</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Normalization">Normalization<a class="anchor-link" href="#Normalization">¶</a></h3><p>Normalize input features with varying ranges to learn faster. Normalizing, sets $\mu=0$ and $\sigma^2=1$ for all training examples.</p>
+<ul>
+<li>Batch normalization – the idea of normalizing inputs is extended to all layers. $z^{[l]}$ is normalized before applying the activation function. The flow of parameters would then be,</li>
+</ul>
+<p>$$X \xrightarrow{W^{[1]}, b^{[1]}} Z^{[1]} \xrightarrow{\beta^{[1]},\gamma^{[1]}} \tilde{Z}^{[1]} \to a^{[1]} = g( \tilde{Z}^{[1]}) \xrightarrow{W^{[2]}, b^{[2]}} Z^{[2]}…$$</p>
+<blockquote><p>$\tilde{Z}^{[1]}$ is the normalized $Z^{[1]}$ computed using parameters $\beta^{[1]}$, $\gamma^{[1]}$. Just like $W^{[l]}$ and $b^{[l]}$ are parameters that are learned during training, $\beta^{[l]}$ and $\gamma^{[l]}$ are too.</p>
+<p>In case of mini-batch gradient descend, exponential weighted averages of $\mu$ and $\sigma^2$ across batches are saved during training. These are used to compute $\tilde{Z}^{[l]\{t\}})$ during inference time.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Train-faster-and-better">Train faster and better<a class="anchor-link" href="#Train-faster-and-better">¶</a></h3><ul>
+<li><p>Mini-batch gradient descend – if the training set size is huge, models learn better, but each epoch takes longer. In mini-batch gradient descend, the inputs are sliced into batches and a step is taken by gradient descend after training on a mini-batch. Mini-batch size is generally chosen in between 1 and $m$ to take advantage of both vectorization and quicker steps. Typical batch sizes are 64, 128, 256 or 512 training examples, such that each mini-batch fits in memory of CPU / GPU</p>
+</li>
+<li><p>Gradient descend with Momentum – mini-batch gradient descend introduces oscillations which may slow down reaching the optimum. Momentum solves this problem by adding a moving average like affect and dampening the oscillations to reach the optimum faster. Momentum $\beta$, controls the size of the sliding window $\approx \frac{1}{1- β}$</p>
+</li>
+<li><p>RMS Prop – Guides the gradient descend algorithm towards the minimum by taking longer steps in the dimensions farther away from minimum and smaller steps in the dimensions closer to minimum. $\beta_2$  and $\epsilon$ are hyperparameters for this optimization. $\epsilon$ is not so important and is added only to avoid division by zero error and is generally set to $10^{-8}$</p>
+</li>
+<li><p>Adam – combines ideas from gradient descend with momentum and RMS prop and uses $\beta$, $\beta_2$  and $\epsilon$ as hyperparameters</p>
+</li>
+<li><p>Learning rate decay – mini-batch gradient descend adds oscillations around the minimum. Adding a decay to learning rate converges better. So $\alpha$ is no longer a constant and becomes</p>
+</li>
+</ul>
+<p>$$\alpha=\frac{1}{(1 + decay\_rate \times epoch\_number) \times \alpha_0}$$</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Hyperparameter-Tuning">Hyperparameter Tuning<a class="anchor-link" href="#Hyperparameter-Tuning">¶</a></h3><p>As there are many hyperparameters to set before training, it is important to realize that not all of them are equally important. For example, $\alpha$ is more important $\lambda$, so fine tuning $\alpha$ first is better. Some approaches for tuning a hyperparameter are,</p>
+<ul>
+<li><p>Grid based search – create a table of combinations of hyperparameter 1 and 2 values. For each combination evaluate on dev set to find the best combination</p>
+</li>
+<li><p>Random based search – randomly select combinations of values for hyperparameters 1 and 2. For each combination evaluate on dev set to find the best combination. After performing a random search in a broad domain of values, a more fine-grained search in the area(s) of interest using the results from coarse random search can be performed. It is important to scale the hyperparameters before selecting values uniformly at random</p>
+</li>
+<li><p>Panda VS Caviar approach – If the model is complex that multiple combinations cannot be tested, it is a better idea to baby sit watching how $J$ varies with time and change hyperparameter values at runtime.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Multiclass-classification">Multiclass classification<a class="anchor-link" href="#Multiclass-classification">¶</a></h3><p>Softmax layer is used as the final layer to classify into $C$ classes. The activations from final layer $L$ are computed as,</p>
+<p>$$a_i^{[L]} = \frac{t_i}{\sum_{j=1}^C t_i}$$</p>
+<p>where $t_i = (e^{z_i})^{[L]}$</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Transfer-Learning">Transfer Learning<a class="anchor-link" href="#Transfer-Learning">¶</a></h3><p>Use the learned parameters from one model to another. It is done by replacing the last few layers in the original trained network. The new layers can then be trained using the new dataset of interest. This is generally applicable when features identified by initial layers of an existing model can be re-used for a another task.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Convolutional-Neural-Nets">Convolutional Neural Nets<a class="anchor-link" href="#Convolutional-Neural-Nets">¶</a></h2><p>A class of deep neural nets for computer vision tasks. It is expected of a DNN to identify the features from $X$ without the need for hand tuning them. Therefore, in computer vision tasks images, videos are generally used as is as $X$. Without feature engineering if the image is passed as is to the network the number of parameters to learn can be quite high based on the image’s resolution. For example, if the input image is (width, height, RGB channels) = (1000, 1000, 3) dimensional, fully connecting it (as shown in Figure 1) to a layer with $n^{[1]} = 1000$, would imply $W.shape = (1000, 3\times10^6)$, i.e. 3 billion parameters. Training so many parameters demands lot of training data and hence existing ideas from DNN are not used for computer vision applications. Therefore, a new class called Convolutional Neural Nets (CNN) is studied.</p>
+<p>It is known that earlier layers in a DNN identify simple features like edges and the later ones detect more complex shapes in a given image. The operator, convolution $\ast$, in Mathematics solves both the above problems – identify edges in earlier layers and shapes in the later, requires fewer parameters than a fully connected DNN.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Working-of-a-convolution-operation">Working of a convolution operation<a class="anchor-link" href="#Working-of-a-convolution-operation">¶</a></h3><center>
+<img alt="convolution operator animation" src="https://drive.google.com/uc?export=view&amp;id=1i8dczLaLdZ6OYpQXBDrIW7qSwK-CjROb"/>
+</center>
+<center>
+<caption>
+<strong>Figure 4:</strong> Convolution operator in action
+  </caption>
+<p>
+<small>
+<strong>Source:</strong> Coding exercise “Convolution model - Step by Step - v2” in the course https://www.coursera.org/learn/convolutional-neural-networks/
+    </small>
+</p>
+</center><ul>
+<li>The number of channels (the 3rd dimension) in the input layer should match the number of dimension in convolution filter</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Padding">Padding<a class="anchor-link" href="#Padding">¶</a></h3><p>Due to the way $\ast$ works, cells on the edges contribute lesser compared to inner cells in the output layer. Strip(s) of zeros are added to input layer before $\ast$ operation which is called padding, $p$ to solve this problem. There are two types of padding,</p>
+<ul>
+<li><p>Same $\implies p = 0$</p>
+</li>
+<li><p>Valid $p = \frac{f-1}{2}$ where $f$ is dimension of the convolution filter. More on $f$ below.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Dimensionality-involving-a-convolution-operation">Dimensionality involving a convolution operation<a class="anchor-link" href="#Dimensionality-involving-a-convolution-operation">¶</a></h3><p>$$(n, n, \#channels) \ast (f, f, \#channels) \to (\lfloor \frac{n + 2p - f}{s + 1} \rfloor,\lfloor \frac{n + 2p - f}{s + 1} \rfloor, \#filters)$$</p>
+<p>where $n$ = dimension of input layer / image</p>
+<blockquote><p>$f$ = dimension of convolution filter</p>
+<p>$p$ = amount of padding to input layer</p>
+<p>$s$ = stride length of convolution filter on input layer</p>
+<p>$\# filters$ = number of convolution filters used on input layer</p>
+</blockquote>
+<p>For Figure 4: $n = 5, \# channels = 1, f = 3, p = 0, s = 1, \# filters = 1$</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Pooling">Pooling<a class="anchor-link" href="#Pooling">¶</a></h3><p>Another type of operator like $\ast$, which is mainly used to shrink the height and width of the input. Just like $\ast$, pooling layers also are filters which run across the input. However, they do not have any parameters to learn.</p>
+<ul>
+<li><p>Max Pooling – pick the max value at every position of filter on the input</p>
+</li>
+<li><p>Average Pooling – pick the average value at every position of filter on the input</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Sequence-Models---[-Work-in-Progress-]">Sequence Models - [ Work in Progress ]<a class="anchor-link" href="#Sequence-Models---[-Work-in-Progress-]">¶</a></h2><p>A class of Deep Neural Networks for modelling inputs that have an ordering or exist in sequences. For example, a sequence of words is a sentence, a sequence of air pressure values (over time) is an audio / sound.</p>
+<h3 id="Natural-Language-Processing-(NLP)">Natural Language Processing (NLP)<a class="anchor-link" href="#Natural-Language-Processing-(NLP)">¶</a></h3><p>Sequence modelling techniques are widely used for processing Natural (Human) language. Since neural networks work on matrices of numbers a simple way to encode (English) words to numbers is to one-hot encode them. In order to do that, assuming there are 10000 words in English dictionary, every word is assigned a unique random number between (10000, 1). Then, if the word 'Aaron' is assigned number 3, its one-hot encoded matrix would be,</p>
+<center>
+  $
+  \begin{bmatrix}
+    0 \\
+    0 \\
+    1 \\
+    0 \\
+    . \\
+    . \\
+    . \\
+    0 \\
+  \end{bmatrix}_{10000\times 1}
+  $
+</center><p>After every word is converted to its one-hot representation, the sentence is fed into a Recurrent Neural Network (RNN) as shown in Figure 5. For a given sentence say, "Aaron bikes to school everyday", $x^{&lt;1&gt;}$ would be one-hot encoding of 'Aaron', $x^{&lt;2&gt;}$ would be one-hot encoding of 'bikes' and so on. If the goal of the RNN is to find the parts of speech of each word in the sentence, then  $y^{&lt;1&gt;}$ would be parts of speech for 'Aaron', $y^{&lt;2&gt;}$ would be parts of speech for 'bikes' and so on. The training data for this task would be, X = one-not encoded words of English sentences, and Y = parts of speech for each word for each sentence.</p>
+<center>
+<img alt="a recurrent neural network" src="https://drive.google.com/uc?export=view&amp;id=1FGV5ZaPfAwsRJZJaNzbj7iO2D1Uc9MhH"/>
+</center>
+<center>
+<caption>
+<strong>Figure 5:</strong> Recurrent Neural Network
+  </caption>
+</center><h3 id="Why-RNNs-and-not-just-use-DNNs?">Why RNNs and not just use DNNs?<a class="anchor-link" href="#Why-RNNs-and-not-just-use-DNNs?">¶</a></h3><p>Just like CNNs are well suited for Computer Vision tasks, RNNs are designed for tasks which have a temporal nature. RNNs,</p>
+<ul>
+<li>allow outputs to be of different lengths, i.e. $T_X \neq T_Y$, for example in the task of Machine Translation where length of output sentence can be different from input sentence</li>
+<li>can share features learned accross different positions of text (in NLP)</li>
+<li>have fewer parameters to compute compared to DNNs just like in CNNs</li>
+</ul>
+<p><a href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/">The Unreasonable Effectiveness of Recurrent Neural Networks</a> blog post talks about various applications of RNNs besides NLP.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Forward-Propagation-in-RNNs">Forward Propagation in RNNs<a class="anchor-link" href="#Forward-Propagation-in-RNNs">¶</a></h3><center>
+<p>$a^{<t>} = g_1(W_{aa}a^{<t-1>} + W_{ax}x^{<t>} + b_a)$</t></t-1></t></p>
+<p>$\hat{y}^{<t>} = g_2(W_{ya}a^{<t>} + b_y)$</t></t></p>
+</center><p>where</p>
+<ul>
+<li>$a^{&lt;0&gt;} = \vec{0}$, usually</li>
+<li>$W_{aa}, W_{ax}, W_{ya}, b_a$ and $b_y$ are parameters learned by gradient descend</li>
+<li>$g_1$ is usually tanh or ReLU and $g_2$ is usually sigmoid or softmax</li>
+</ul>
+<p>Note that, the parameters are shared across the time steps &lt;t&gt;. The notation is however simplified to,</p>
+<center>
+<p>$a^{<t>} = g(W_a[a^{<t-1>}, x^{<t>}] + b_a)$</t></t-1></t></p>
+<p>$\hat{y}^{<t>} = g(W_ya^{<t>} + b_y)$</t></t></p>
+</center><p>where</p>
+<ul>
+<li>$W_a$ is column wise concatenated matrix of $W_{aa}$ and $W_{ax}$</li>
+<li>$[a^{&lt;t-1&gt;}, x^{&lt;t&gt;}]$ is concatenated row wise i.e.</li>
+</ul>
+<center>
+$
+  \begin{bmatrix}
+      W_{aa} &amp; W_{ax}
+  \end{bmatrix}
+  \begin{bmatrix}
+      a^{<t-1>} \\
+      x^{<t>}
+  \end{bmatrix} = W_{aa}a^{<t-1>} + W_{ax}x^{<t>}
+$
+</t></t-1></t></t-1></center><h3 id="Back-Propagation-in-RNNs">Back Propagation in RNNs<a class="anchor-link" href="#Back-Propagation-in-RNNs">¶</a></h3><p>In Figure 6, it can be seen how parameters flow to compute loss in forward propagation step and how gradient descend flows the derivates of Loss, $L$ back to adjust the parameters via back propagation.</p>
+<center>
+<img alt="recurrent neural network computational graph" src="https://drive.google.com/uc?export=view&amp;id=16DR4wsumB0sguKDPWRQf5-_Bx2kC84cu"/>
+</center>
+<center>
+<caption>
+<strong>Figure 6:</strong> Recurrent Neural Network Computational Graph
+  </caption>
+</center><p><br/>
+In the form of equations, first $L^{&lt;t&gt;}$ is computed using cross entropy loss like before. Final loss, $L$ is a summation of losses for all $t$</p>
+<center>
+<p>$L^{<t>}(\hat{y}^{<t>}, y^{<t>}) = - (y^{<t>}log(\hat{y}^{<t>}) - (1-y^{<t>})log(1-\hat{y}^{<t>}))$</t></t></t></t></t></t></t></p>
+<p>$L(\hat{y}, y) = \sum_{t=1}^{T_y} L^{<t>}(\hat{y}^{<t>}, y^{<t>})$</t></t></t></p>
+</center>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Language-Model">Language Model<a class="anchor-link" href="#Language-Model">¶</a></h3><p>Grammatically and logically, "Ram ate an apple" is more likely than "Ram <b>an ate</b> apple". The goal of the language model is to assign a higher probability for the first sentence. In other words the language model should,</p>
+<center>
+  $P(y^{&lt;1&gt;} = Ram,\ y^{&lt;2&gt;} = ate,\ y^{&lt;3&gt;} = an,\ y^{&lt;4&gt;} = apple)\ \mathbf{&gt;}\ P(y^{&lt;1&gt;} = Ram,\ y^{&lt;2&gt;} = an,\ y^{&lt;3&gt;} = ate,\ y^{&lt;4&gt;} = apple)$
+</center><p>For this task, a one-to-many RNN is used. $y^{&lt;t&gt;}$ are the probabilities of all words in vocabulary to be present at position $&lt;t&gt;$ in a sentence. $y^{&lt;t-1&gt;}$ is fed as input, $x^{&lt;t&gt;}$, making it a conditional probabilty, $P(y^{&lt;2&gt;} = ate\ |\ y^{&lt;1&gt;} = Ram)$</p>
+<center>
+<img alt="one-to-many RNN for modelling language" src="https://drive.google.com/uc?export=view&amp;id=181G51N_MwiB-dz9ufBsXOSrmcALILz_o"/>
+</center>
+<center>
+<caption>
+<strong>Figure 7:</strong> one-to-many RNN for modelling language
+  </caption>
+</center><p>Training this on a huge corpus of text, models the sequence of words in a language. Using the conditional probabilities obtained at each $&lt;t&gt;$, the probability of a sentence can be found,</p>
+<center>
+  $P(y^{&lt;1&gt;} = Ram,\ y^{&lt;2&gt;} = ate,\ y^{&lt;3&gt;} = an,\ y^{&lt;4&gt;} = apple) = P(y^{&lt;1&gt;} = Ram) \times P(y^{&lt;2&gt;} = ate\ |\ y^{&lt;1&gt;} = Ram) \times P(y^{&lt;3&gt;} = an\ |\ y^{&lt;1&gt;} = Ram, \ y^{&lt;2&gt;} = ate) \times P(y^{&lt;4&gt;} = apple\ |\ y^{&lt;1&gt;} = Ram, \ y^{&lt;2&gt;} = ate, \ y^{&lt;3&gt;} = an)$
+</center><p><br/>
+$P(y^{&lt;3&gt;} = an\ |\ y^{&lt;1&gt;} = Ram, \ y^{&lt;2&gt;} = ate)$ is obtained from the 3<sup>rd</sup> neuron and so on. As the vocabulary cannot incorporate all the words that ever appear, a special &lt;UNK&gt; token is used to represent all the words out of vocabulary. Similarly character level language models can be created where each character would be $\hat{y}^{&lt;t&gt;}$ and this problem of &lt;UNK&gt; words impacting the accuracy could be mitigated. The problem with character models is that the sequences would be much longer and RNNs cannot carry very long range dependencies. Also, character models are more computationally intensive and so not common.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Gated-Recurrent-Units-(GRU)">Gated Recurrent Units (GRU)<a class="anchor-link" href="#Gated-Recurrent-Units-(GRU)">¶</a></h3><p>RNNs have the problem of vanishing gradients if the sentences are long just like in DNNs. Long term dependencies are quite common in English as a word in the beginning of the sentence can dictate the state of a word in the end of the sentence. To enable long term dependencies, GRU's introduce a concept called a memory cell.</p>
+<center>
+<img alt="RNN and GRU cells" src="https://drive.google.com/uc?export=view&amp;id=1aQNuDtnrP0wZ26-AgabAeKm41uV8vSVF"/>
+</center>
+<center>
+<caption>
+<strong>Figure 8:</strong> RNN and GRU cells
+  </caption>
+</center><p><br/></p>
+<center>
+<p>$\tilde{c}^{<t>} = tanh(W_c[c^{<t-1>},\ x^{<t>}] + b_c) $</t></t-1></t></p>
+<p>$\Gamma_u = \sigma(W_u[c^{<t-1>},\ x^{<t>}] + b_u) $</t></t-1></p>
+</center><p>TODO</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Deep-Learning-Hyperparameters">Deep Learning Hyperparameters<a class="anchor-link" href="#Deep-Learning-Hyperparameters">¶</a></h2><table>
+<thead><tr>
+<th>Hyperparameter</th>
+<th>Symbol</th>
+<th>Common Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>regularization</td>
+<td>$\lambda$</td>
+<td></td>
+<td>also called, “weight decay”</td>
+</tr>
+<tr>
+<td>learning rate</td>
+<td>$\alpha$</td>
+<td>0.01</td>
+<td></td>
+</tr>
+<tr>
+<td>keep_prob</td>
+<td></td>
+<td>0.7</td>
+<td>from Dropout regularization</td>
+</tr>
+<tr>
+<td>momentum</td>
+<td>$\beta$</td>
+<td>0.9</td>
+<td>also used in Adam </td>
+</tr>
+<tr>
+<td>mini-batch size</td>
+<td>$t$</td>
+<td>64, 128, 256, 512</td>
+<td></td>
+</tr>
+<tr>
+<td>RMS Prop</td>
+<td>$\beta_2$</td>
+<td>0.999</td>
+<td>also used in Adam </td>
+</tr>
+<tr>
+<td>learning rate decay</td>
+<td></td>
+<td></td>
+<td>also called decay_rate</td>
+</tr>
+<tr>
+<td>filter size</td>
+<td>$f^{[l]}$</td>
+<td></td>
+<td>In CNN, size of a filter in layer $l$</td>
+</tr>
+<tr>
+<td>stride</td>
+<td>$s^{[l]}$</td>
+<td></td>
+<td>In CNN, stride length in layer $l$</td>
+</tr>
+<tr>
+<td>padding</td>
+<td>$p^{[l]}$</td>
+<td></td>
+<td>In CNN, padding in layer $l$</td>
+</tr>
+<tr>
+<td># filters</td>
+<td>$n_c^{[l]}$</td>
+<td></td>
+<td>In CNN, number of filters used in layer $l$</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
